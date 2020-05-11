@@ -1,0 +1,398 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="pupPalsStyle.css" rel="stylesheet" type="text/css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  <title>FirebasePupPals</title>
+  <base href="/">
+
+</head>
+
+
+<!--SignUp modal-->
+
+<body>
+
+  <div class="topnav">
+    <a class="active" href="index.html">Home</a>
+    <a type="button" data-toggle="modal" data-target="#modal-signup">Create Account</a>
+    <a type="button" data-toggle="modal" data-target="#modal-account" >Update Account</a> 
+    <div class="topnav-right">
+      <a type="button" data-toggle="modal" data-target="#modal-signIN" >Sign In</a> 
+      <a type="button" id="logout">Sign Out</a>
+
+      <label class="s" id="status"><span> Status </span></label>
+      
+      
+    </div>
+  </div>
+
+    
+  <div class="container">
+  <div id="modal-account" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        
+        <h2>Account Details:</h2>
+        
+        <div class="modal-body" id="updateBody">
+    <div id="details" class="account-details">
+      
+      </div> 
+      </div>   
+      <div class="modal-footer">
+        <button type ="submit" class="btn btn-default" data-toggle="modal" data-target="#modal-update">Update Info</button>
+      </div>
+  </div>
+ </div>
+    </div>
+</div>
+</div>
+
+
+<div class="container">
+  <!-- Trigger the modal with a button -->
+  
+
+  <!-- Modal -->
+  <div  id = "modal-update" class = "modal fade"  role="dialog">
+    
+    <div  class = "modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+      <h4 class=" modal-header">Update Info</h4><br />
+      <form id="update-form">
+        <div class="modal-body">
+        <div class="input-field">
+          <input type="text" id="update-human-name" required/>
+          <label for="update-human-name">Human Name</label>
+        </div>
+        <div class="input-field">
+          <input type="text" id="update-dog-name"required/>
+          <label for="update-dog-name">Dog Name</label>
+        </div>
+        <div class="input-field">
+          <input type="text" id="update-breed" required/>
+          <label for="update-breed">Breed</label>
+        </div>
+        <div class="input-field">
+          <input type="text" id="update-age" required/>
+          <label for="update-age">Age</label>
+        </div>
+        <div class="input-field">
+          <input type="text" id="update-color" required/>
+          <label for="update-color">Color</label>
+        </div>
+        <div class="input-field">
+          <input type="text" id="update-size" required/>
+          <label for="update-size">Size</label>
+        </div>
+        <div class="input-field">
+          <input type="text" id="update-state" required/>
+          <label for="update-state">State</label>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <p style="color: red;">**Please fill out all fields</p>
+        <button type ="submit" class="btn btn-default" >Update</button>
+        <button style="float: right;" type="button" class="btn btn-default" data-dismiss="modal" >Close</button>
+      </div>
+      </div>
+        </div>
+        </div>
+      </form>
+    </div>
+    </div>
+
+  <div class="container">
+    <!-- Modal Sign in -->
+    <div id = "modal-signIN" class = "modal fade" role="dialog">
+      
+      <div  class = "modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+        <h4 class="modal-header">Sign In</h4><br />
+        <form id="signIN-form">
+          <div class="modal-body">
+          <div class = "input-field">
+            <input type = "email" id = "signIN-email" required />
+            <label for="signIN-email">Email Address</label>
+          </div>
+          <div class="input-field">
+            <input type="password" id="signIN-password" required/>
+            <label for="signIN-password">Password</label>
+          </div>
+        </div>
+          <div class="modal-footer">
+            <button type ="submit" class="btn btn-default">Sign In</button>
+            <button style="float: right;" type="button" class="btn btn-default" onclick="clearLoginError()" data-dismiss="modal">Close</button> 
+            <p class="error pink-text center-align"></p>         
+          </div>
+          
+          
+        </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+
+  <div class="container">
+    <!-- Trigger the modal with a button -->
+    
+  
+    <!-- Modal -->
+    <div id = "modal-signup" class = "modal fade" role="dialog">
+      
+      <div  class = "modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+        <h4 class=" modal-header">Sign Up</h4><br />
+        <form id="signup-form">
+          <div class="modal-body">
+          <div class = "input-field">
+            <input type = "email" id = "signup-email" required />
+            <label for="signup-email">Email Address</label>
+          </div>
+          <div class="input-field">
+            <input type="password" id="signup-password" required/>
+            <label for="signup-password">Choose Password</label>
+          </div>
+          <div class="input-field">
+            <input type="text" id="human-name" required/>
+            <label for="human-name">Human Name</label>
+          </div>
+          <div class="input-field">
+            <input type="text" id="dog-name" required/>
+            <label for="dog-name">Dog Name</label>
+          </div>
+          <div class="input-field">
+            <input type="text" id="breed" required/>
+            <label for="breed">Breed</label>
+          </div>
+          <div class="input-field">
+            <input type="text" id="age" required/>
+            <label for="age">Age</label>
+          </div>
+          <div class="input-field">
+            <input type="text" id="color" required/>
+            <label for="color">Color</label>
+          </div>
+          <div class="input-field">
+            <input type="text" id="size" required/>
+            <label for="size">Size</label>
+          </div>
+          <div class="input-field">
+            <input type="text" id="state" required/>
+            <label for="state">State</label>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type ="submit" class="btn btn-default">Sign Up</button>
+          <button style="float: right;" type="button" class="btn btn-default" data-dismiss="modal" >Close</button>
+        </div>
+        </div>
+          </div>
+          </div>
+        </form>
+      </div>
+      </div>
+
+  
+
+
+
+<!--End SignUp modal-->
+
+
+<div id="sortID" class="info">
+  <h4>Breed Selector</h4>
+  <select id="breedSelect">
+    <option value="--">--</option>
+    <option value="lab">Lab</option>
+    <option value="beagle">Beagle</option>
+    <option value="Golden Retriever">Golden Retriever</option>
+    <option value="bulldog">BullDog</option>
+  </select>
+    
+<!--Eventually would like to add functinality to have user be able to add their own breed, for this purpose I picked four popular breeds. -->
+
+  <h4>Age Selector</h4>
+  <select id="ageSelect">
+    <option value="--">--</option>
+    <option value="1">1</option>
+    <option value="2">2</option>
+    <option value="3">3</option>
+    <option value="4">4</option>
+    <option value="5">5</option>
+    <option value="6">6</option>
+    <option value="7">7</option>
+    <option value="8">8</option>
+    <option value="9">9</option>
+    <option value="10">10</option>
+    <option value="11">11</option>
+    <option value="12">12</option>
+    <option value="13">13</option>
+    <option value="14">14</option>
+    <option value="15">15</option>
+    <option value="16">16</option>
+  </select>
+
+  <h4>Size Selector</h4>
+  <select id="sizeSelect">
+    <option value="--">--</option>
+    <option value="small">Small</option>
+    <option value="medium">Medium</option>
+    <option value="large">Large</option>
+  </select>
+
+
+  <h4>State Selector</h4>
+  <select id="selectState">
+    <option value="--">Select State</option>
+    <option value="Alabama">Alabama</option>
+    <option value="Alaska">Alaska</option>
+    <option value="Arizona">Arizona</option>
+    <option value="Arkansas">Arkansas</option>
+    <option value="California">California</option>
+    <option value="Colorado">Colorado</option>
+    <option value="Connecticut">Connecticut</option>
+    <option value="Delaware">Delaware</option>
+    <option value="District Of Columbia">District Of Columbia</option>
+    <option value="Florida">Florida</option>
+    <option value="Georgia">Georgia</option>
+    <option value="Hawaii">Hawaii</option>
+    <option value="Idaho">Idaho</option>
+    <option value="Illinois">Illinois</option>
+    <option value="Indiana">Indiana</option>
+    <option value="Iowa">Iowa</option>
+    <option value="Kansas">Kansas</option>
+    <option value="Kentucky">Kentucky</option>
+    <option value="Louisiana">Louisiana</option>
+    <option value="Maine">Maine</option>
+    <option value="Maryland">Maryland</option>
+    <option value="Massachusetts">Massachusetts</option>
+    <option value="Michigan">Michigan</option>
+    <option value="Minnesota">Minnesota</option>
+    <option value="Mississippi">Mississippi</option>
+    <option value="Mississippi">Missouri</option>
+    <option value="Montana">Montana</option>
+    <option value="Nebraska">Nebraska</option>
+    <option value="Nevada">Nevada</option>
+    <option value="New Hampshire">New Hampshire</option>
+    <option value="New Jersey">New Jersey</option>
+    <option value="New Mexico">New Mexico</option>
+    <option value="New York">New York</option>
+    <option value="North Carolina">North Carolina</option>
+    <option value="North Dakota">North Dakota</option>
+    <option value="Ohio">Ohio</option>
+    <option value="Oklahoma">Oklahoma</option>
+    <option value="Oregon">Oregon</option>
+    <option value="Pennsylvania">Pennsylvania</option>
+    <option value="Rhode Island">Rhode Island</option>
+    <option value="South Carolina">South Carolina</option>
+    <option value="South Dakota">South Dakota</option>
+    <option value="Tennessee">Tennessee</option>
+    <option value="Texas">Texas</option>
+    <option value="Utah">Utah</option>
+    <option value="Vermont">Vermont</option>
+    <option value="Virginia">Virginia</option>
+    <option value="Washington">Washington</option>
+    <option value="West Virginia">West Virginia</option>
+    <option value="Wisconsin">Wisconsin</option>
+    <option value="Wyoming">Wyoming</option>
+  </select>
+
+
+  <button class="btn btn-default" onclick="filter()">Enter Information</button>
+  <button class="btn btn-default" onclick="reset()">Reset Returned Users</button>
+</div>
+</div>
+  <div id = "list_div" class="users">
+   <h3> Returned Users: </h3> 
+  </div>
+
+<script>
+
+
+  function clearLoginError(){
+    const clearLogin = document.querySelector("#signIN-form");
+    clearLogin.reset();
+    clearLogin.querySelector('.error').innerHTML = " ";
+  }
+
+  function reset(){
+    const userReset = document.querySelector("#list_div");
+    userReset.innerHTML = "<div class = 'list'><h3>Returned Users</h3>";
+  }
+
+
+  function filter(){
+    var answerAge = document.getElementById("ageSelect").value;
+    var answerBreed = document.getElementById("breedSelect").value;
+    var answerSize = document.getElementById("sizeSelect").value;
+    var answerState = document.getElementById("selectState").value;
+    const list_div = document.querySelector("#list_div");
+
+    db.collection("users").where("age", "==", answerAge).where("breed", "==", answerBreed).where("size", "==", answerSize).where("state", "==", answerState)
+    .get()
+    .then(function(querySnapshot) {
+      querySnapshot.forEach(function(doc) {
+            // doc.data() is never undefined for query doc snapshots
+          
+          list_div.innerHTML += "<div class = 'list'><h3>" + doc.data().dogName + "</h3><p>Breed : " + doc.data().breed + "</p><p>Age : " + doc.data().age + "</p><p>Color : " + doc.data().color + "</p><p>Size : " + doc.data().size + "</p><p>Owner : " + doc.data().humanName + "</p><p>State : " + doc.data().state + "</p></div"
+      });
+   })
+    .catch(function(error) {
+        console.log("Error getting documents: ", error);
+    });
+    
+  
+  }
+
+  </script>
+
+
+
+
+
+
+
+<script src="https://www.gstatic.com/firebasejs/7.5.2/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/7.5.2/firebase-auth.js"></script>
+<script src="https://www.gstatic.com/firebasejs/7.5.2/firebase-firestore.js"></script>
+<script src="https://www.gstatic.com/firebasejs/7.5.2/firebase-storage.js"></script>
+
+<script>
+var Config = {
+ apiKey: "AIzaSyD-4o5kh1pE9gIl1Y9MHjVVqQzLtfz9i5Y",
+ authDomain: "puppals-af4bd.firebaseapp.com",
+ databaseURL: "https://puppals-af4bd.firebaseio.com",
+ projectId: "puppals-af4bd",
+ storageBucket: "puppals-af4bd.appspot.com",
+ messagingSenderId: "661614653887",
+ appId: "1:661614653887:web:0ec755bceea07f3ac0f10a",
+ measurementId: "G-2CDH5PFC4R"
+};
+
+
+firebase.initializeApp(Config);
+
+const auth = firebase.auth();
+const db = firebase.firestore();
+const storage = firebase.storage();
+
+</script>
+
+<script src = "apps.js"></script>
+
+</body>
+</html>
